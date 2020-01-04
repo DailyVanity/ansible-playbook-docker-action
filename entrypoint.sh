@@ -23,6 +23,7 @@ then
   if [ ! -z "$VAULTFILE" ]
   then
     echo "Using \$VAULTFILE to decrypt keyfile."
+    echo ansible-vault decrypt ${INPUT_KEYFILE} ${VAULTFILE}
     ansible-vault decrypt ${INPUT_KEYFILE} ${VAULTFILE}
   fi
   export KEYFILE="--key-file ${INPUT_KEYFILE}"
@@ -101,5 +102,6 @@ else
 fi
 
 echo "going to execute: "
-echo ansible-playbook ${INPUT_PLAYBOOKNAME} ${INVENTORY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${KEYFILE} ${VERBOSITY} ${VAULTFILE}
-ansible-playbook ${INPUT_PLAYBOOKNAME} ${INVENTORY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${KEYFILE} ${VERBOSITY} ${VAILTFILE}
+cat ~/.ssh/vault_key
+echo ansible-playbook ${INVENTORY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${KEYFILE} ${VAULTFILE} ${VERBOSITY} ${INPUT_PLAYBOOKNAME}
+ansible-playbook ${INVENTORY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${KEYFILE} ${VAILTFILE} ${VERBOSITY} ${INPUT_PLAYBOOKNAME}
