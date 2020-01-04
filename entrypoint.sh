@@ -26,7 +26,7 @@ then
     echo ansible-vault decrypt ${INPUT_KEYFILE} ${VAULTFILE}
     ansible-vault decrypt ${INPUT_KEYFILE} ${VAULTFILE}
   fi
-  export KEYFILE="--key-file ${INPUT_KEYFILE}"
+  export KEYFILE="--private-key ${INPUT_KEYFILE}"
 else
   echo "\$INPUT_KEYFILE not set. You'll most probably only be able to work on localhost."
 fi
