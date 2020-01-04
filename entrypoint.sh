@@ -20,11 +20,9 @@ export KEYFILE=
 if [ ! -z "$INPUT_KEYFILE" ]
 then
   echo "\$INPUT_KEYFILE is set. Will use ssh keyfile for host connections."
-  if [ ! -z "$INPUT_KEYFILEVAULTPASS" ]
+  if [ ! -z "$VAULTFILE" ]
   then
-    echo "Using \$INPUT_KEYFILE_VAULT_PASS to decrypt keyfile."
-    mkdir -p ~/.ssh
-    echo "${INPUT_KEYFILEVAULTPASS}" > ~/.ssh/vault_key
+    echo "Using \$VAULTFILE to decrypt keyfile."
     ansible-vault decrypt ${INPUT_KEYFILE} ${VAULTFILE}
   fi
   export KEYFILE="--key-file ${INPUT_KEYFILE}"
@@ -103,11 +101,5 @@ else
 fi
 
 echo "going to execute: "
-if [-z "$VAULTFILE"]
-then
-  echo ansible-playbook ${INPUT_PLAYBOOKNAME} ${INVENTORY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${KEYFILE} ${VERBOSITY} ${VAULTFILE}
-  ansible-playbook ${INPUT_PLAYBOOKNAME} ${INVENTORY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${KEYFILE} ${VERBOSITY} ${VAILTFILE}
-else
-  echo ansible-playbook ${INPUT_PLAYBOOKNAME} ${INVENTORY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${KEYFILE} ${VERBOSITY} 
-  ansible-playbook ${INPUT_PLAYBOOKNAME} ${INVENTORY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${KEYFILE} ${VERBOSITY} 
-fi
+echo ansible-playbook ${INPUT_PLAYBOOKNAME} ${INVENTORY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${KEYFILE} ${VERBOSITY} ${VAULTFILE}
+ansible-playbook ${INPUT_PLAYBOOKNAME} ${INVENTORY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${KEYFILE} ${VERBOSITY} ${VAILTFILE}
