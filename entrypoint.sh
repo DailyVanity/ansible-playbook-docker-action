@@ -104,5 +104,6 @@ fi
 
 echo "going to execute: "
 cat ~/.ssh/vault_key
+echo "${EXTRAVARS}"
 echo ansible-playbook ${INVENTORY} ${KEYFILE} ${VERBOSITY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${INPUT_PLAYBOOKNAME}
 ansible-playbook ${INVENTORY} ${KEYFILE} ${VERBOSITY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${INPUT_PLAYBOOKNAME}
