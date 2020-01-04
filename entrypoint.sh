@@ -26,7 +26,7 @@ then
     echo ansible-vault decrypt ${INPUT_KEYFILE} ${VAULTFILE}
     ansible-vault decrypt ${INPUT_KEYFILE} ${VAULTFILE}
   fi
-  export KEYFILE="--private-key ${INPUT_KEYFILE}"
+  export KEYFILE="--key-file ${INPUT_KEYFILE}"
 else
   echo "\$INPUT_KEYFILE not set. You'll most probably only be able to work on localhost."
 fi
@@ -103,5 +103,5 @@ fi
 
 echo "going to execute: "
 cat ~/.ssh/vault_key
-echo ansible-playbook ${INVENTORY} ${VAULTFILE} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${VERBOSITY} ${INPUT_PLAYBOOKNAME}
-ansible-playbook ${INVENTORY} ${VAULTFILE} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${VERBOSITY} ${INPUT_PLAYBOOKNAME}
+echo ansible-playbook ${INVENTORY} ${KEYFILE} ${VAULTFILE} ${VERBOSITY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${INPUT_PLAYBOOKNAME}
+ansible-playbook ${INVENTORY} ${KEYFILE} ${VAILTFILE} ${VERBOSITY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${INPUT_PLAYBOOKNAME}
