@@ -10,6 +10,7 @@ then
   mkdir -p ~/.ssh
   echo "${INPUT_KEYFILEVAULTPASS}" > ~/.ssh/vault_key
   export VAULTFILE="--vault-password-file ~/.ssh/vault_key"
+  export ANSIBLE_VAULT_PASSWORD_FILE="~/.ssh/vault_key"
   echo "\$INPUT_KEYFILEVAULTPASS is set. Will use value for vault."
 else
   echo "\$INPUT_KEYFILEVAULTPASS not set. No vault set."
@@ -103,5 +104,5 @@ fi
 
 echo "going to execute: "
 cat ~/.ssh/vault_key
-echo ansible-playbook ${INVENTORY} ${VAULTFILE} ${VERBOSITY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${INPUT_PLAYBOOKNAME}
-ansible-playbook ${INVENTORY} ${VAILTFILE} ${VERBOSITY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${INPUT_PLAYBOOKNAME}
+echo ansible-playbook ${INVENTORY} ${KEYFILE} ${VERBOSITY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${INPUT_PLAYBOOKNAME}
+ansible-playbook ${INVENTORY} ${KEYFILE} ${VERBOSITY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${INPUT_PLAYBOOKNAME}
