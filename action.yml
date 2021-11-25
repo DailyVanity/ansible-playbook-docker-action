@@ -49,6 +49,7 @@ runs:
     - ${{ inputs.galaxyGithubUser }}
     - ${{ inputs.galaxyGithubToken }}
     - ${{ inputs.keyFile }}
+    - ${{ inputs.key }}
     - ${{ inputs.keyFileVaultPass }}
     - ${{ inputs.extraVars }}
     - ${{ inputs.extraFile }}
