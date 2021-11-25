@@ -32,6 +32,18 @@ else
   echo "\$INPUT_KEYFILE not set. You'll most probably only be able to work on localhost."
 fi
 
+if [ ! -z "$INPUT_KEY" ] && [ "$INPUT_KEY" != "" ]; then
+  echo "🔑 Loading the ssh key..."
+  mkdir -p $HOME/.ssh
+  echo "$INPUT_KEY" > $HOME/.ssh/deploykey
+  chmod 0600 $HOME/.ssh/deploykey
+  export KEYFILE="--key-file $HOME/.ssh/deploykey"
+  echo "Done!! 🍻"  
+else
+  echo "😔 key is not set, Please set key."
+  exit 1
+fi
+
 # Evaluate verbosity
 export VERBOSITY=
 if [ -z "$INPUT_VERBOSITY" ]
