@@ -39,7 +39,9 @@ if [ ! -z "$INPUT_KEY" ] && [ "$INPUT_KEY" != "" ]; then
   chmod 0600 $HOME/.ssh/deploykey
   export KEYFILE="--key-file $HOME/.ssh/deploykey"
   echo "Done!! 🍻"  
-else
+fi
+
+if ["$KEYFILE" == ""]; then
   echo "😔 key is not set, Please set key."
   exit 1
 fi
