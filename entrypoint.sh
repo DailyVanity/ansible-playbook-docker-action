@@ -46,6 +46,16 @@ if ["$KEYFILE" == ""]; then
   exit 1
 fi
 
+# Setting remote user
+export KEYUSER=
+if [ ! -z "$INPUT_KEYUSER" ]
+then
+  echo "\$INPUT_KEYFILE is set. Will use ssh keyfile for host connections."
+  export KEYUSER="--user ${INPUT_KEYUSER}"
+else
+  echo "\$INPUT_KEYFILE not set. You'll most probably only be able to work on localhost."
+fi
+
 # Evaluate verbosity
 export VERBOSITY=
 if [ -z "$INPUT_VERBOSITY" ]
@@ -117,5 +127,5 @@ else
 fi
 
 echo "going to execute: "
-echo ansible-playbook ${INVENTORY} ${KEYFILE} ${VERBOSITY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${EXTRAVARS} ${INPUT_PLAYBOOKNAME}
-ansible-playbook ${INVENTORY} ${KEYFILE} ${VERBOSITY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${EXTRAVARS} ${INPUT_PLAYBOOKNAME}
+echo ansible-playbook ${INVENTORY} ${KEYUSER} ${KEYFILE} ${VERBOSITY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${EXTRAVARS} ${INPUT_PLAYBOOKNAME}
+ansible-playbook ${INVENTORY} ${KEYUSER} ${KEYFILE} ${VERBOSITY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${EXTRAVARS} ${INPUT_PLAYBOOKNAME}
