@@ -39,6 +39,9 @@ inputs:
   key:
     description: 'SSH Key string'
     required: false
+  keyUser:
+    description: 'SSH User'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -50,6 +53,7 @@ runs:
     - ${{ inputs.galaxyGithubToken }}
     - ${{ inputs.keyFile }}
     - ${{ inputs.key }}
+    - ${{ inputs.keyUser }}
     - ${{ inputs.keyFileVaultPass }}
     - ${{ inputs.extraVars }}
     - ${{ inputs.extraFile }}
