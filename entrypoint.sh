@@ -114,6 +114,9 @@ else
     --roles-path ${ROLES_PATH} \
     -r ${REQUIREMENTS} \
     ${VERBOSITY}
+  ansible-galaxy collections install --force \
+    -r ${REQUIREMENTS} \
+    ${VERBOSITY}
 fi
 
 # Evaluate extra vars file
