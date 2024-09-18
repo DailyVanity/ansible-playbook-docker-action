@@ -32,12 +32,13 @@ else
   echo "\$INPUT_KEYFILE not set. You'll most probably only be able to work on localhost."
 fi
 
+export KEYFILE=
 if [ ! -z "$INPUT_KEY" ] && [ "$INPUT_KEY" != "" ]; then
   echo "🔑 Loading the ssh key..."
   mkdir -p $HOME/.ssh
   echo "$INPUT_KEY" > $HOME/.ssh/deploykey
   chmod 0600 $HOME/.ssh/deploykey
-  KEYFILE="--key-file $HOME/.ssh/deploykey"
+  export KEYFILE="--key-file $HOME/.ssh/deploykey"
   echo "Done!! 🍻"  
 fi
 
