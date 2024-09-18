@@ -37,7 +37,7 @@ if [ ! -z "$INPUT_KEY" ] && [ "$INPUT_KEY" != "" ]; then
   mkdir -p $HOME/.ssh
   echo "$INPUT_KEY" > $HOME/.ssh/deploykey
   chmod 0600 $HOME/.ssh/deploykey
-  $KEYFILE="--key-file $HOME/.ssh/deploykey"
+  KEYFILE="--key-file $HOME/.ssh/deploykey"
   echo "Done!! 🍻"  
 fi
 
