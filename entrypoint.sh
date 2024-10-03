@@ -128,4 +128,7 @@ fi
 
 echo "going to execute: "
 echo ansible-playbook ${INVENTORY} ${KEYUSER} ${KEYFILE} ${VERBOSITY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${EXTRAVARS} ${INPUT_PLAYBOOKNAME}
+pwd
+ls -al ./
+ls -al ./.github
 ansible-playbook ${INVENTORY} ${KEYUSER} ${KEYFILE} ${VERBOSITY} ${EXTRAFILE} ${INPUT_EXTRAVARS} ${EXTRAVARS} ${INPUT_PLAYBOOKNAME}
